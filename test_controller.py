@@ -27,7 +27,7 @@ def add_place():
 def add_ticket():
     ticket_num = request.form['ticket_num']
     return render_template('ticket_page.html', variable= ticket_num)
-
+#3
 
 @app.route('/show_ticket')
 def show_ticket():
