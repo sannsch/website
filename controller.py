@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, redirect, flash
-from test_model import waiting_num, store_ticket_num, get_number
+from model import waiting_num, store_ticket_num, get_number
 import os
 
 app = Flask(__name__)
@@ -8,7 +8,7 @@ current_num = 30
 
 @app.route('/')
 def home():
-    return render_template('test_index.html')
+    return render_template('place.html')
 
 
 places = ['post', 'coop']
@@ -18,10 +18,10 @@ places = ['post', 'coop']
 def add_place():
     place = request.form['place']
     if place in places:
-        return render_template('view.html')
+        return render_template('add_ticket.html')
     else:
         flash('Butiken du har valt finns inte i listan för tillgängliga butiker')
-        return render_template('test_index.html')
+        return render_template('place.html')
 
 @app.route('/add_ticket', methods=['POST'])
 def add_ticket():
