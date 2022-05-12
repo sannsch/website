@@ -2,16 +2,17 @@ from flask import Flask, request, render_template, redirect, flash
 from model import waiting_num, store_ticket_num, get_number
 import os
 
+
 app = Flask(__name__)
 app.secret_key = 'the random string'
-current_num = 30
+
 
 @app.route('/')
 def home():
     return render_template('place.html')
 
 
-places = ['post', 'coop']
+places = ['postnord', 'coop',  ]
 
 
 @app.route('/add_place', methods=['POST'])
@@ -29,10 +30,7 @@ def add_ticket():
     store_ticket_num(ticket_num)
     return redirect('/show_ticket')
 
-@app.route('/increment_num')
-def increment_num():
-    global current_num
-    current_num += 1
+
 
 @app.route('/show_ticket')
 def show_ticket():
