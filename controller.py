@@ -1,6 +1,10 @@
+import requests
 from flask import Flask, request, render_template, redirect, flash
 from model import waiting_num, store_ticket_num, get_number
-import os
+
+
+
+
 
 
 app = Flask(__name__)
@@ -13,6 +17,7 @@ def home():
 
 
 places = ['postnord', 'coop',  ]
+
 
 
 @app.route('/add_place', methods=['POST'])
@@ -28,6 +33,7 @@ def add_place():
 def add_ticket():
     ticket_num = request.form['ticket_num']
     store_ticket_num(ticket_num)
+
     return redirect('/show_ticket')
 
 
@@ -35,10 +41,12 @@ def add_ticket():
 @app.route('/show_ticket')
 def show_ticket():
     your_number =get_number()
+    value = request.args['value']
 
-    waiting = waiting_num(your_number, current_num)
-    return render_template('ticket_page.html',your_number=your_number, current=current_num, waiting=waiting)
+    
+    # waiting = waiting_num(your_number, current_num)
+    return render_template('ticket_page.html',your_number=your_number, value=value)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
