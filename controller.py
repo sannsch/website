@@ -6,6 +6,7 @@ from model import waiting_num, store_ticket_num, get_number
 
 
 
+
 app = Flask(__name__)
 app.secret_key = 'the random string'
 
@@ -15,7 +16,7 @@ def home():
     return render_template('place.html')
 
 
-places = ['post', 'coop']
+places = ['postnord', 'coop',  ]
 
 
 
@@ -34,6 +35,7 @@ def add_ticket():
     store_ticket_num(ticket_num)
 
     return redirect('/show_ticket')
+
 
 
 @app.route('/show_ticket')
