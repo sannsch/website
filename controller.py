@@ -6,6 +6,7 @@ import time
 from threading import Thread, Event
 
 
+
 app = Flask(__name__)
 app.secret_key = 'the random string'
 
@@ -39,7 +40,7 @@ def home():
     return render_template('place.html')
 
 
-places = ['post', 'coop']
+places = ['postnord', 'coop',  ]
 
 
 
@@ -64,7 +65,9 @@ def add_ticket():
 #     return jsonify(result=time.time())
 
 
-@app.route('/show_ticket', methods = ['GET'])
+
+@app.route('/show_ticket')
+
 def show_ticket():
     your_number =get_number()
     result = jsonify(time.time())
