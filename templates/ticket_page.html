@@ -1,9 +1,38 @@
 {% extends "layout.html" %}
 
 {% block body %}
+<script type ="text/javascript">
+        var intervalID = setInterval(update_values, 1000);
+
+        function update_values() {
+        $.getJSON($C:\Users\hanna\OneDrive\Dokument\Pycharm\website-hanna\website-hanna\controller.py +'/show_ticket',
+
+        function(data) {
+        $('#result').text(data.result);
+        console.log(data)
+        });
+
+        };
+
+        function stopTextColor() {
+        clearInterval(intervalID);
+        }
+</script>
+
+<body onload="update_values();">
+<p>
+        <span id="result"</span>
+        <script>
+               document.getElementById("result").innerHTML;
+        </script>
+</p>
+
+</body>
 <html>
 <body>
-        <p>Nuvarande nummer: {{value}} <br>
+
+
+        <p>Nuvarande nummer: {{result}} <br>
         Antal nummer tills ditt: {{waiting}}<br>
         Ditt nummer: {{your_number}}</p>
 </body>
