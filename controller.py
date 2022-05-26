@@ -1,7 +1,7 @@
 import requests
 
 from flask import Flask, request, render_template, redirect, flash, jsonify
-from model import waiting_num, store_ticket_num, get_number#, store_in_dictionary, save_dictionary, get_dictionary, load
+from model import waiting_num, store_ticket_num, get_number, create_current_num, get_current_num
 import time
 
 
@@ -17,7 +17,6 @@ def home():
 places = ['postnord', 'coop',  ]
 
 
-
 @app.route('/add_place', methods=['POST'])
 def add_place():
     place = request.form['place']
@@ -30,21 +29,28 @@ def add_place():
 
 @app.route('/add_ticket', methods=['POST'])
 def add_ticket():
+    current_num = create_current_num()
     ticket_num = request.form['ticket_num']
+    # if ticket_num < current_num:
+    #     flash('Butiken du har valt finns inte i listan för tillgängliga butiker')
+    #     return render_template('add_ticket.html')
+    # else:
+
     store_ticket_num(ticket_num)
     return redirect('/show_ticket')
 
 
 @app.route('/show_ticket')
-
 def show_ticket():
-    your_number =get_number()
-    result = jsonify(time.time())
-    print (result)
 
-    
-    # waiting = waiting_num(your_number, current_num)
-    return render_template('ticket_page.html',your_number=your_number, result=result)
+    your_number =get_number()
+    current = get_current_num()
+
+    waiting = waiting_num(your_number, current)
+
+    return render_template('ticket_page.html',your_number=your_number, current=current, waiting=waiting)
+
+
 
 
 if __name__ == '__main__':
