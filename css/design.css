@@ -1,0 +1,29 @@
+body {
+background-image: linear-gradient(to bottom right, white, #62D1FD, #62FD94)
+}
+
+h1 {
+  color: white;
+  background-color: #62D1FD;
+  font-family: garamond;
+  font-size: 300%;
+  border: 20px solid #62D1FD;
+  margin: 0px;
+
+}
+p  {
+  color: white;
+  background-color: #62D1FD;
+  font-family: garamond;
+  font-size: 160%;
+  border: 20px solid #62D1FD;
+  margin: 50px;
+}
+label  {
+  color: white;
+  background-color: #62D1FD;
+  font-family: garamond;
+  font-size: 160%;
+  border: 20px solid #62D1FD;
+  margin: 50px;
+}

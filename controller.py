@@ -4,7 +4,6 @@ import os
 
 app = Flask(__name__)
 app.secret_key = 'the random string'
-current_num = 30
 
 @app.route('/')
 def home():
@@ -29,15 +28,10 @@ def add_ticket():
     store_ticket_num(ticket_num)
     return redirect('/show_ticket')
 
-@app.route('/increment_num')
-def increment_num():
-    global current_num
-    current_num += 1
-
 @app.route('/show_ticket')
 def show_ticket():
-    your_number =get_number()
-
+    your_number = get_number()
+    current_num = 30
     waiting = waiting_num(your_number, current_num)
     return render_template('ticket_page.html',your_number=your_number, current=current_num, waiting=waiting)
 
