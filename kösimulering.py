@@ -1,4 +1,5 @@
 
+
 import requests
 from random import randint
 import time
@@ -12,3 +13,6 @@ def dino(y=30):
         time.sleep(10)
 
 dino()
+
+
+
