@@ -1,8 +1,8 @@
-import requests
 
-from flask import Flask, request, render_template, redirect, flash, jsonify
+
+from flask import Flask, request, render_template, redirect, flash
 from model import waiting_num, store_ticket_num, get_number, create_current_num, get_current_num
-import time
+
 
 
 app = Flask(__name__)
@@ -31,13 +31,13 @@ def add_place():
 def add_ticket():
     current_num = create_current_num()
     ticket_num = request.form['ticket_num']
-    # if ticket_num < current_num:
-    #     flash('Butiken du har valt finns inte i listan för tillgängliga butiker')
-    #     return render_template('add_ticket.html')
-    # else:
-
     store_ticket_num(ticket_num)
-    return redirect('/show_ticket')
+    ticket = get_number()
+    if ticket < current_num:
+        flash('Det här numret har redan passerat')
+        return render_template('add_ticket.html')
+    else:
+        return redirect('/show_ticket')
 
 
 @app.route('/show_ticket')
