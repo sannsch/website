@@ -3,20 +3,16 @@
 {% block body %}
 
 <html>
+<head>
+    <meta http-equiv="refresh" content="30">
+</head>
 <body>
 
 
         <p>Nuvarande nummer: {{current}} <br>
         Antal nummer tills ditt: {{waiting}}<br>
         Ditt nummer: {{your_number}}</p>
- <script>
- window.onload = function() {
-	if(!window.location.hash) {
-		window.location = window.location + '#loaded';
-		window.location.reload(10000);
-	}
-}
- </script>
+
 </body>
 </html>
 

@@ -31,27 +31,5 @@ def get_current_num():
     return current
 
 
-# def load():
-#     global dictionary
-#     try:
-#         with open('que.dat') as f:
-#             dictionary = json.load(f)
-#     except:
-#         dictionary = {}
-#
-# def save_dictionary():
-#     with open('que.dat', 'w') as f:
-#         json.dump(dictionary, f)
-#
-# def store_in_dictionary(key, value,):
-#     dictionary[key] = [dictionary[key], value]
-#
-#
-# def get_dictionary():
-#     current = dictionary.get(value, default=None)
-#     return current
-#
-#
-
 
     
