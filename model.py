@@ -29,7 +29,3 @@ def get_current_num():
     global current
     current +=1
     return current
-
-
-
-    

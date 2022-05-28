@@ -9,9 +9,6 @@ app = Flask(__name__)
 app.secret_key = 'the random string'
 
 
-
-
-
 @app.route('/')
 def home():
     return render_template('place.html')
@@ -42,26 +39,13 @@ def add_ticket():
     else:
         return redirect('/show_ticket')
 
+
 @app.route('/show_ticket')
 def show_ticket():
     your_number = get_number()
-    current_num = 30
-    waiting = waiting_num(your_number, current_num)
-    return render_template('ticket_page.html',your_number=your_number, current=current_num, waiting=waiting)
-
-
-@app.route('/show_ticket')
-def show_ticket():
-
-    your_number =get_number()
     current = get_current_num()
-
     waiting = waiting_num(your_number, current)
-
-    return render_template('ticket_page.html',your_number=your_number, current=current, waiting=waiting)
-
-
-
+    return render_template('ticket_page.html', your_number=your_number, current=current, waiting=waiting)
 
 
 if __name__ == '__main__':
